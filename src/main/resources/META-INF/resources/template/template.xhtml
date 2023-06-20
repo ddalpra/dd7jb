@@ -60,15 +60,6 @@
                     <div class="content-section implementation">
                         <ui:insert name="implementation"></ui:insert>
                     </div>
-                    <div class="content-section documentation">
-                        <ui:insert name="static-documentation"/>
-                        <ui:insert name="source">
-                            <sc:tabscode
-                                    value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
-                                <ui:insert name="more-source-tabs"/>
-                            </sc:tabscode>
-                        </ui:insert>
-                    </div>
                 </ui:insert>
                 <ui:include src="./footer.xhtml"></ui:include>
             </div>

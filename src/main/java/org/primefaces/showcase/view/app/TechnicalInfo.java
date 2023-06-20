@@ -42,7 +42,7 @@ import lombok.extern.jbosslog.JBossLog;
 @Named
 @Data
 @JBossLog
-public class xTechnicalInfo {
+public class TechnicalInfo {
 
     private String quarkus;
     private String omniFaces;
