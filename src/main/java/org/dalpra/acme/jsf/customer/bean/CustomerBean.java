@@ -18,6 +18,7 @@ import org.primefaces.showcase.domain.Product;
 import org.testcontainers.shaded.com.github.dockerjava.core.RemoteApiVersion;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class CustomerBean implements Serializable {
     private String name;
     private String surname;
     private String email;
-    private Date dob;
+    private LocalDate dob;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
     private Stato state;
@@ -91,11 +92,11 @@ public class CustomerBean implements Serializable {
         this.email = email;
     }
 
-    public Date getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
@@ -137,7 +138,19 @@ public class CustomerBean implements Serializable {
             }
         }
         else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
+            //Customer tmpCustomer = client.target(jaxrsResource+"/"+customer.getId()).request().get().readEntity(Customer.class);
+
+            Response response =
+                    client.target(jaxrsResource)
+                            .request(MediaType.APPLICATION_JSON)
+                            .put(Entity.entity(customer, MediaType.APPLICATION_JSON),
+                                    Response.class);
+            if (response.getStatus() == Response.Status.CREATED.getStatusCode()) {
+
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer Error"));
+            }
         }
         PrimeFaces.current().executeScript("PF('manageProductDialog').hide()");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-products");

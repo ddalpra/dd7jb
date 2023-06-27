@@ -80,7 +80,7 @@
                         <p:commandButton icon="pi pi-pencil" update=":form:manage-product-content"
                                          oncomplete="PF('manageProductDialog').show()"
                                          styleClass="edit-button rounded-button ui-button-success" process="@this">
-                            <f:setPropertyActionListener value="#{product}" target="#{crudView.selectedProduct}"/>
+                            <f:setPropertyActionListener value="#{customer}" target="#{customerBean.customer}"/>
                             <p:resetInput target=":form:manage-product-content"/>
                         </p:commandButton>
                         <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"
