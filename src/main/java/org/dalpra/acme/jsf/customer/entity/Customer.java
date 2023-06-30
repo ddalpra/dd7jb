@@ -22,7 +22,7 @@ public class Customer {
         name = "";
         surname = "";
         email = "";
-        dob = LocalDate.now();
+        dob = null;
         state = Stato.ACTIVE;
         createAt = LocalDateTime.now();
         updateAt = LocalDateTime.now();

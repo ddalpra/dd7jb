@@ -45,7 +45,7 @@ public class AppMenu {
 
         //AJAX FRAMEWORK CATEGORY START
         List<MenuItem> arrayMenuItems = new ArrayList<>();
-        arrayMenuItems.add(new MenuItem("Customers", "/ui/ajax/basic"));
+        arrayMenuItems.add(new MenuItem("Customers", "/customer/customers"));
         menuCategories.add(new MenuCategory("Application", arrayMenuItems));
         //AJAX FRAMEWORK CATEGORY END
 

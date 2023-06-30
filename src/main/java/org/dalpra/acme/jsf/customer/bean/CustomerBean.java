@@ -132,9 +132,9 @@ public class CustomerBean implements Serializable {
                             .post(Entity.entity(customer, MediaType.APPLICATION_JSON),
                                     Response.class);
             if (response.getStatus() == Response.Status.CREATED.getStatusCode()) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer Added"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Customer Added","Customer Add correctly"));
             }else{
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer Error"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Customer Added","Error to add Customer"));
             }
         }
         else {
@@ -147,9 +147,9 @@ public class CustomerBean implements Serializable {
                                     Response.class);
             if (response.getStatus() == Response.Status.CREATED.getStatusCode()) {
 
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Customer Update","Customer updated correctly"));
             }else{
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Customer Error"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Customer Update","Error to update Customer"));
             }
         }
         PrimeFaces.current().executeScript("PF('manageProductDialog').hide()");
